@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadget Hat Bd - Premium Gadgets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff4757;
+            --dark: #2c3036;
+            --light: #f4f7f6;
+            --text: #333;
+        }
+        
+        body { font-family: 'Hind Siliguri', sans-serif; margin: 0; padding: 0; background-color: var(--light); color: var(--text); scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
+        .container { width: 90%; max-width: 1200px; margin: auto; padding: 0 15px; box-sizing: border-box; }
+        
+        /* Header & Nav */
+        header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; padding: 10px 0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo { font-size: 22px; font-weight: 700; color: var(--dark); display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--primary); }
+        .logo-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); background: #fff; display: block;}
+        
+        .nav-links { display: flex; gap: 20 - px; font-weight: 600; display: none; }
+        @media (min-width: 768px) { .nav-links { display: flex; } }
+        .nav-icons i { font-size: 22px; margin-left: 15px; cursor: pointer; color: var(--dark); }
+
+        /* Hero Section */
+        .hero { background: linear-gradient(rgba(44, 48, 54, 0.8), rgba(44, 48, 54, 0.8)), url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80') center/cover; color: #fff; text-align: center; padding: 60px 20px; }
+        .hero h1 { font-size: 32px; margin-bottom: 10px; }
+        .hero p { font-size: 16px; color: #ccc; }
+        .btn-main { background: var(--primary); color: #fff; padding: 12px 30px; font-size: 16px; font-weight: 600; border-radius: 30px; display: inline-block; transition: 0.3s; border: none; margin-top: 15px; }
+
+        /* Small Sections */
+        .section-padding-sm { padding: 30px 0; }
+        .section-title { text-align: center; font-size: 26px; font-weight: 700; margin-bottom: 25px; position: relative; }
+        .section-title::after { content: ''; width: 50px; height: 3px; background: var(--primary); display: block; margin: 8px auto 0; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: center; }
+        .service-card { background: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .service-card i { font-size: 28px; color: var(--primary); margin-bottom: 10px; }
+        .service-card h3 { font-size: 16px; margin-bottom: 5px; }
+        .service-card p { font-size: 13px; color: #666; margin: 0; }
+        
+        .about-box { background: #fff; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); font-size: 14px; max-width: 700px; margin: auto; line-height: 1.6; }
+
+        /* Product Grid */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .product-card { background: #fff; border-radius: 15px; padding: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .product-image { background: #f9f9f9; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 10px; margin-bottom: 15px; overflow: hidden; }
+        .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .price { font-size: 22px; font-weight: bold; color: var(--primary); margin-bottom: 10px; display: block; }
+        .btn-add-cart { background: var(--dark); color: #fff; width: 100%; padding: 10px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+
+        /* Order Form */
+        .order-form-box { background: #fff; padding: 30px; border-radius: 15px; max-width: 500px; margin: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-family: inherit; }
+        .submit-btn { background: var(--primary); color: #fff; width: 100%; padding: 14px; border: none; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+
+        footer { background: var(--dark); color: #fff; padding: 30px 0; text-align: center; margin-top: 50px; }
+        .floating-cart { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; z-index: 1000; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="20260301_191536.jpg" alt="Logo" class="logo-img">
+                Gadget<span>Hat</span> Bd
+            </div>
+            <div class="nav-icons"><a href="#order"><i class="fas fa-shopping-cart"></i></a></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>স্মার্ট গ্যাজেট, স্মার্ট লাইফস্টাইল</h1>
+            <p>অরিজিনাল ও প্রিমিয়াম গ্যাজেট কিনুন সবচেয়ে সেরা দামে।</p>
+            <a href="#products" class="btn-main">এখনই কিনুন</a>
+        </div>
+    </section>
+
+    <section class="section-padding-sm" id="services">
+        <div class="container">
+            <h2 class="section-title">আমাদের সার্ভিসসমূহ</h2>
+            <div class="services-grid">
+                <div class="service-card"><i class="fas fa-truck"></i><h3>ক্যাশ অন ডেলিভারি</h3><p>হাতে পেয়ে টাকা পরিশোধ করুন।</p></div>
+                <div class="service-card"><i class="fas fa-shipping-fast"></i><h3>দ্রুত ডেলিভারি</h3><p>২৪-৪৮ ঘণ্টার মধ্যে হোম ডেলিভারি।</p></div>
+                <div class="service-card"><i class="fas fa-shield-alt"></i><h3>১০০% অরিজিনাল</h3><p>সেরা কোয়ালিটির নিশ্চয়তা।</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding-sm" id="about">
+        <div class="container">
+            <h2 class="section-title">আমাদের সম্পর্কে</h2>
+            <div class="about-box">
+                <strong>Gadget Hat Bd</strong> হলো বাংলাদেশের বিশ্বস্ত অনলাইন গ্যাজেট শপ। আমাদের লক্ষ্য সাশ্রয়ী মূল্যে সেরা মানের স্মার্টওয়াচ ও গ্যাজেট আপনার হাতে পৌঁছে দেওয়া।
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding-sm" id="products">
+        <div class="container">
+            <h2 class="section-title">আমাদের কালেকশন</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image"><img src="oneplus-airpods.jpg.jpg" alt="OnePlus"></div>
+                    <h3>OnePlus Earbuds</h3>
+                    <span class="price">৳ ৩৫০</span>
+                    <button class="btn-add-cart" onclick="addToCart('OnePlus Earbuds - 350 Tk')">অর্ডার করুন</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="awei_earbuds-1-1.png" alt="Awei"></div>
+                    <h3>Apple Earbuds 2nd (Dubai)</h3>
+                    <span class="price">৳ ৫০০</span>
+                    <button class="btn-add-cart" onclick="addToCart('Apple Earbuds 2nd Edition - 500 Tk')">অর্ডার করুন</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="IMG-20260205-WA0008.jpg" alt="Samsung"></div>
+                    <h3>Samsung Earbuds</h3>
+                    <span class="price">৳ ৩৫০</span>
+                    <button class="btn-add-cart" onclick="addToCart('Samsung Earbuds - 350 Tk')">অর্ডার করুন</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="order-section" id="order" style="padding: 40px 0;">
+        <div class="container">
+            <div class="order-form-box" id="form-container">
+                <h2 style="text-align: center; margin-bottom: 20px;">অর্ডার কনফার্ম করুন</h2>
+                <form id="myOrderForm" action="https://formsubmit.co/knowledgeplanet69@gmail.com" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div class="form-group"><label>নাম:</label><input type="text" name="Name" required></div>
+                    <div class="form-group"><label>মোবাইল:</label><input type="tel" name="Mobile" required pattern="[0-9]{11}"></div>
+                    <div class="form-group"><label>ঠিকানা:</label><textarea name="Address" rows="2" required></textarea></div>
+                    <div class="form-group"><label>প্রোডাক্ট:</label><input type="text" id="selected-product" name="Product" required></div>
+                    <button type="submit" class="submit-btn">অর্ডার সাবমিট করুন</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Gadget Hat Bd. সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <a href="#order" class="floating-cart"><i class="fas fa-shopping-bag"></i></a>
+
+    <script>
+        function addToCart(pName) {
+            document.getElementById('selected-product').value = pName;
+            window.location.href = '#order';
+        }
+    </script>
+</body>
+</html>
