@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadget Hat Bd - Premium Gadgets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff4757;
+            --dark: #2c3036;
+            --light: #f4f7f6;
+            --text: #333;
+        }
+        
+        body { font-family: 'Hind Siliguri', sans-serif; margin: 0; padding: 0; background-color: var(--light); color: var(--text); scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
+        .container { width: 90%; max-width: 1200px; margin: auto; padding: 0 15px; box-sizing: border-box; }
+        
+        /* Header & Nav */
+        header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; padding: 15px 0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Logo Styles Updated */
+        .logo { font-size: 24px; font-weight: 700; color: var(--dark); display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--primary); }
+        .logo-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); background: #fff;}
+        
+        .nav-links { display: flex; gap: 20px; font-weight: 600; display: none; } /* Hidden on mobile */
+        @media (min-width: 768px) { .nav-links { display: flex; } }
+        .nav-icons i { font-size: 22px; margin-left: 15px; cursor: pointer; color: var(--dark); transition: 0.3s; }
+        .nav-icons i:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero { background: linear-gradient(rgba(44, 48, 54, 0.9), rgba(44, 48, 54, 0.9)), url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80') center/cover; color: #fff; text-align: center; padding: 100px 20px; }
+        .hero h1 { font-size: 40px; margin-bottom: 10px; font-weight: 700; }
+        .hero p { font-size: 18px; margin-bottom: 30px; color: #ccc; }
+        .cod-badge { background: #2ed573; color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 14px; font-weight: bold; display: inline-block; margin-bottom: 20px; letter-spacing: 1px; }
+        .btn-main { background: var(--primary); color: #fff; padding: 15px 35px; font-size: 18px; font-weight: 600; border-radius: 30px; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-main:hover { background: #ff2a3f; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 71, 87, 0.4); }
+
+        /* Services & About Section */
+        .section-padding { padding: 80px 0; }
+        .section-padding-sm { padding: 40px 0; } /* New class for smaller sections */
+        .section-title { text-align: center; font-size: 32px; font-weight: 700; margin-bottom: 40px; position: relative; }
+        .section-title::after { content: ''; width: 60px; height: 4px; background: var(--primary); display: block; margin: 10px auto 0; border-radius: 2px; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: center; }
+        .service-card { background: #fff; padding: 20px 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-bottom: 4px solid transparent; }
+        .service-card:hover { transform: translateY(-5px); border-bottom: 4px solid var(--primary); }
+        .service-card i { font-size: 30px; color: var(--primary); margin-bottom: 10px; }
+        .service-card h3 { font-size: 18px; margin-bottom: 8px; }
+        .service-card p { font-size: 14px; margin: 0; color: #666; }
+        
+        .about-box { background: #fff; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); line-height: 1.6; font-size: 15px; color: #555; max-width: 800px; margin: auto;}
+
+        /* Products Section */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { background: #fff; border-radius: 15px; padding: 20px; text-align: center; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; position: relative; overflow: hidden; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .product-image { background: var(--dark); height: 250px; display: flex; align-items: center; justify-content: center; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+        .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .product-card h3 { font-size: 20px; margin-bottom: 10px; color: var(--dark); height: 50px; }
+        .price { font-size: 24px; font-weight: bold; color: var(--primary); margin-bottom: 15px; display: block; }
+        .btn-add-cart { background: var(--dark); color: #fff; width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: 600; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .btn-add-cart:hover { background: var(--primary); }
+
+        /* Order Form */
+        .order-section { background: #fff; padding: 80px 0; border-top: 1px solid #eee; }
+        .order-form-box { background: #fff; padding: 40px; border-radius: 20px; max-width: 600px; margin: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.08); border: 1px solid #eee; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
+        .form-group input, .form-group textarea { width: 100%; padding: 14px; border: 2px solid #eee; border-radius: 8px; box-sizing: border-box; font-size: 16px; font-family: 'Hind Siliguri', sans-serif; transition: 0.3s; background: #fdfdfd; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); outline: none; }
+        .submit-btn { background: var(--primary); color: #fff; width: 100%; padding: 16px; border: none; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background: #ff2a3f; }
+
+        /* Success Message Box */
+        .success-msg { display: none; text-align: center; padding: 40px 20px; background: #e8f9f0; border: 2px solid #2ed573; border-radius: 15px; color: #2c3e50; }
+        .success-msg i { font-size: 50px; color: #2ed573; margin-bottom: 15px; }
+        .success-msg h3 { font-size: 24px; margin-bottom: 10px; }
+
+        /* Footer */
+        footer { background: var(--dark); color: #fff; padding: 50px 0 20px 0; text-align: center; }
+        .social-links { margin: 20px 0; }
+        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 50%; color: #fff; font-size: 20px; transition: 0.3s; margin: 0 10px; }
+        .social-links a:hover { background: #1877f2; transform: translateY(-3px); }
+        
+        /* Floating Cart */
+        .floating-cart { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 8px 15px rgba(255, 71, 87, 0.4); z-index: 1000; transition: 0.3s; }
+        .floating-cart:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="20260301_191536.jpg" alt="Logo" class="logo-img">
+                Gadget<span>Hat</span> Bd
+            </div>
+            <div class="nav-links">
+                <a href="#about">আমাদের সম্পর্কে</a>
+                <a href="#services">সার্ভিস</a>
+                <a href="#products">প্রোডাক্টস</a>
+            </div>
+            <div class="nav-icons">
+                <a href="#order"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="cod-badge"><i class="fas fa-truck"></i> 100% Cash on Delivery</div>
+            <h1>স্মার্ট গ্যাজেট, স্মার্ট লাইফস্টাইল</h1>
+            <p>অরিজিনাল ও প্রিমিয়াম গ্যাজেট কিনুন সবচেয়ে সেরা দামে। সারা বাংলাদেশে হোম ডেলিভারি!</p>
+            <a href="#products" class="btn-main"><i class="fas fa-shopping-bag"></i> এখনই কিনুন</a>
+        </div>
+    </section>
+
+    <section class="section-padding-sm" id="services">
+        <div class="container">
+            <h2 class="section-title">আমাদের সার্ভিসসমূহ</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-box-open"></i>
+                    <h3>ক্যাশ অন ডেলিভারি (COD)</h3>
+                    <p>প্রোডাক্ট হাতে পেয়ে টাকা পরিশোধ করার সুবিধা। কোনো অগ্রিম পেমেন্টের ঝামেলা নেই।</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>দ্রুত হোম ডেলিভারি</h3>
+                    <p>অর্ডার কনফার্ম হওয়ার ২৪-৪৮ ঘণ্টার মধ্যে সারা বাংলাদেশে দ্রুততম ডেলিভারি।</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>১০০% অরিজিনাল পণ্য</h3>
+                    <p>আমাদের প্রতিটি প্রোডাক্ট যাচাইকৃত এবং সেরা কোয়ালিটির নিশ্চয়তা।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding-sm" id="about" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="section-title">আমাদের সম্পর্কে</h2>
+            <div class="about-box">
+                <strong>Gadget Hat Bd</strong> হলো বাংলাদেশের বিশ্বস্ত অনলাইন গ্যাজেট শপ। আমাদের লক্ষ্য হলো গ্রাহকদের হাতে সাশ্রয়ী মূল্যে সেরা মানের স্মার্টওয়াচ, ইয়ারবাডস এবং প্রিমিয়াম গ্যাজেট তুলে দেওয়া। আমরা বিশ্বাস করি গ্রাহকের সন্তুষ্টিই আমাদের আসল অর্জন। তাই কোয়ালিটি নিয়ে আমরা কখনোই আপোষ করি না। আমাদের সাথে থাকার জন্য আপনাকে অসংখ্য ধন্যবাদ!
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="products">
+        <div class="container">
+            <h2 class="section-title">আমাদের কালেকশন</h2>
+            <div class="product-grid">
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="oneplus-airpods.jpg.jpg" alt="OnePlus Earbuds" onerror="this.src='https://via.placeholder.com/300x300.png?text=OnePlus+Earbuds'">
+                    </div>
+                    <h3>OnePlus Earbuds</h3>
+                    <span class="price">৳ ৩৫০</span>
+                    <button class="btn-add-cart" onclick="addToCart('OnePlus Earbuds - 350 Tk')"><i class="fas fa-cart-plus"></i> অর্ডার করুন</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="awei_earbuds-1-1.png" alt="Apple Earbuds">
+                    </div>
+                    <h3>Apple Earbuds 2nd Edition (Dubai)</h3>
+                    <span class="price">৳ ৫০০</span>
+                    <button class="btn-add-cart" onclick="addToCart('Apple Earbuds 2nd Edition - 500 Tk')"><i class="fas fa-cart-plus"></i> অর্ডার করুন</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="IMG-20260205-WA0008.jpg" alt="Samsung Earbuds">
+                    </div>
+                    <h3>Samsung Earbuds</h3>
+                    <span class="price">৳ ৩৫০</span>
+                    <button class="btn-add-cart" onclick="addToCart('Samsung Earbuds - 350 Tk')"><i class="fas fa-cart-plus"></i> অর্ডার করুন</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="order-section" id="order">
+        <div class="container">
+            <div class="order-form-box" id="form-container">
+                <h2 style="text-align: center; margin-bottom: 20px;">অর্ডার কনফার্ম করুন</h2>
+                
+                <form id="myOrderForm" action="https://formsubmit.co/knowledgeplanet69@gmail.com" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <div class="form-group">
+                        <label>আপনার নাম: *</label>
+                        <input type="text" name="Name" placeholder="পুরো নাম লিখুন" required>
+                    </div>
+                    <div class="form-group">
+                        <label>মোবাইল নম্বর: *</label>
+                        <input type="tel" name="Mobile" placeholder="০১৭XXXXXXXX" required pattern="[0-9]{11}">
+                    </div>
+                    <div class="form-group">
+                        <label>পূর্ণ ঠিকানা: *</label>
+                        <textarea name="Address" rows="3" placeholder="গ্রাম/রাস্তা, থানা, জেলা" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>প্রোডাক্ট এর নাম: *</label>
+                        <input type="text" id="selected-product" name="Product_Model" placeholder="প্রোডাক্ট নির্বাচন করুন অথবা লিখুন" required>
+                    </div>
+                    <button type="submit" class="submit-btn"><i class="fas fa-check-circle"></i> অর্ডার সাবমিট করুন</button>
+                </form>
+            </div>
+            
+            <div class="order-form-box success-msg" id="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h3>অভিনন্দন!</h3>
+                <p>অর্ডারটি কনফার্ম করতে দ্রুতই আমাদের একজন প্রতিনিধি আপনার সংগে যোগাযোগ করবে।</p>
+                <button onclick="window.location.reload()" class="btn-main" style="margin-top: 20px;">আরও শপিং করুন</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h2>Gadget Hat Bd</h2>
+            <p>আপনার বিশ্বস্ত অনলাইন শপিং পার্টনার</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1FKLfti93Y/" target="_blank" title="আমাদের ফেসবুক পেজ"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <p style="font-size: 14px; color: #888; margin-top: 20px;">&copy; 2026 Gadget Hat Bd. সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <a href="#order" class="floating-cart">
+        <i class="fas fa-shopping-bag"></i>
+    </a>
+
+    <script>
+        // Add to Cart Function
+        function addToCart(productName) {
+            document.getElementById('selected-product').value = productName;
+            window.location.href = '#order';
+        }
+
+        // Form Submit via AJAX
+        const orderForm = document.getElementById('myOrderForm');
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> প্রসেস হচ্ছে...';
+            
+            const formData = new FormData(orderForm);
+            
+            fetch(orderForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById('form-container').style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                } else {
+                    alert("দুঃখিত, কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+                    submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> অর্ডার সাবমিট করুন';
+                }
+            }).catch(error => {
+                alert("দুঃখিত, ইন্টারনেট সংযোগ চেক করুন।");
+                submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> অর্ডার সাবমিট করুন';
+            });
+        });
+    </script>
+</body>
+</html>
